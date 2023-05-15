@@ -3,32 +3,21 @@ package grafo.dirigido;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Vertice<T> /*implements Comparable<Vertice> */ {
+public class Vertice<T> {
 
-    private T carga;
-    private List<Aresta<T>> adj;
-    // Estágios de visitação
+    private final T carga;
+    private final List<Aresta<T>> adj;
     private VertexState status;
-
-    private int distance; // distancia para um vértice v0
-
 
     public Vertice(T carga) {
         this.carga = carga;
-        this.adj = new ArrayList<Aresta<T>>();
+        this.adj = new ArrayList<>();
     }
 
-
-    /**
-     * @return the status
-     */
     public VertexState getStatus() {
         return status;
     }
 
-    /**
-     * @param status the status to set
-     */
     public void setStatus(VertexState status) {
         this.status = status;
     }
@@ -37,11 +26,6 @@ public class Vertice<T> /*implements Comparable<Vertice> */ {
         return carga;
     }
 
-    public void setCarga(T carga) {
-        this.carga = carga;
-    }
-
-    //Armazenando todos os vertices adj
     public void addAdj(Aresta<T> aresta) {
         adj.add(aresta);
     }
@@ -50,35 +34,12 @@ public class Vertice<T> /*implements Comparable<Vertice> */ {
         return adj;
     }
 
-    public void setAdj(List<Aresta<T>> adj) {
-        this.adj = adj;
-    }
-
-//	public int compareTo( Vertice outro){
-//		return  this.tag.compareTo( outro.tag);
-//	}
-
     public boolean equals(Vertice<T> v) {
         return this.carga.equals(v.carga);
     }
 
-    @SuppressWarnings("unchecked")
-    public boolean equals(Object o) {
-        return this == o || equals((Vertice<T>) o);
-    }
-
     public String toString() {
         return this.carga.toString();
-    }
-
-
-    public int getDistance() {
-        return distance;
-    }
-
-
-    public void setDistance(int distance) {
-        this.distance = distance;
     }
 
 }
